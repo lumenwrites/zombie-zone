@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/air-strike-button.obj-3c843892faa54aed1db8712641c15aaf.mesh"
+
+[deps]
+
+files=[ "res://.import/air-strike-button.obj-3c843892faa54aed1db8712641c15aaf.mesh" ]
+
+source_file="res://assets/weapons/air-strike-button.obj"
+dest_files=[ "res://.import/air-strike-button.obj-3c843892faa54aed1db8712641c15aaf.mesh", "res://.import/air-strike-button.obj-3c843892faa54aed1db8712641c15aaf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

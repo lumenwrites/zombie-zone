@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/icons/skull.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/button.png" type="Texture" id=2]
+[ext_resource path="res://StartScreen.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/LilitaOne-Regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.247059 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 384.0
+margin_top = 103.0
+margin_right = 576.0
+margin_bottom = 437.0
+
+[node name="HighScore" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 1 )
+text = "High Score:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 192.0
+margin_bottom = 62.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 61.0
+margin_right = 130.0
+margin_bottom = 32.0
+
+[node name="Skull" type="TextureRect" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 36.0
+margin_top = 3.0
+margin_right = 69.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Placeholder" type="ColorRect" parent="CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 192.0
+margin_bottom = 266.0
+rect_min_size = Vector2( 0, 200 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+margin_top = 270.0
+margin_right = 192.0
+margin_bottom = 334.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Label" parent="CenterContainer/VBoxContainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Play!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

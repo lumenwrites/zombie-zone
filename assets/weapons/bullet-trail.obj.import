@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bullet-trail.obj-98837f49f2c916219363ad4cd342b574.mesh"
+
+[deps]
+
+files=[ "res://.import/bullet-trail.obj-98837f49f2c916219363ad4cd342b574.mesh" ]
+
+source_file="res://assets/weapons/bullet-trail.obj"
+dest_files=[ "res://.import/bullet-trail.obj-98837f49f2c916219363ad4cd342b574.mesh", "res://.import/bullet-trail.obj-98837f49f2c916219363ad4cd342b574.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

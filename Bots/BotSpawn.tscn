@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Bots/BotSpawn.gd" type="Script" id=1]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=2]
+[ext_resource path="res://assets/environment/teleport.obj" type="ArrayMesh" id=3]
+
+[node name="BotSpawn" type="Position3D"]
+script = ExtResource( 1 )
+
+[node name="teleport" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="IncreaseDifficulty" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_IncreaseDifficulty_timeout"]

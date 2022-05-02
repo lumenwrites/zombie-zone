@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/resident-evil.mp3-14b53c3539b57d67d0b93aabf2751b08.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/resident-evil.mp3"
+dest_files=[ "res://.import/resident-evil.mp3-14b53c3539b57d67d0b93aabf2751b08.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

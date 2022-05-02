@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rocket-launcher.mp3-e477b8844fc9f650045383e2fe92b682.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/rocket-launcher.mp3"
+dest_files=[ "res://.import/rocket-launcher.mp3-e477b8844fc9f650045383e2fe92b682.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

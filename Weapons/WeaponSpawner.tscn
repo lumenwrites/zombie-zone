@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://WeaponSpawner.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/build.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/weapons/sentry.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/weapons/fist.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=5]
+[ext_resource path="res://assets/sounds/swoosh.wav" type="AudioStream" id=6]
+
+[node name="WeaponSpawner" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="WeaponModel" type="Spatial" parent="."]
+
+[node name="Arm1" type="Spatial" parent="WeaponModel"]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.284661, 0.719519, -0.537781 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm1"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="Arm2" type="Spatial" parent="WeaponModel"]
+transform = Transform( -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, 0.232007, 0.719519, -0.515751 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="Model" type="MeshInstance" parent="WeaponModel"]
+transform = Transform( -0.950711, -0.310079, -8.31138e-08, -0.310079, 0.950711, -2.7108e-08, 8.74228e-08, 0, -1, 0.168249, 0.115137, -0.602897 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="BuildAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="ReloadAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

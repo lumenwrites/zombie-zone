@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Tooltip" type="Spatial"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+
+[node name="Viewport" type="Viewport" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Ammo Box
+Restores the ammo of the weapon you're currently holding."
+__meta__ = {
+"_edit_use_anchors_": false
+}

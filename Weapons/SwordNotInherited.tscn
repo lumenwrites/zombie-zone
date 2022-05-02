@@ -1,0 +1,161 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/weapons/sword.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Weapons/Melee.gd" type="Script" id=2]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=3]
+[ext_resource path="res://assets/sounds/sword-hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/weapons/fist.obj" type="ArrayMesh" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit1"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Arm1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.284661, -0.275384, -0.342157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Arm1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -32.146, 0, 45 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Arm2:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.232007, 0, -0.515751 ), Vector3( 0.0995947, 0, -0.482369 ), Vector3( 0.851011, 0, -0.0939043 ), Vector3( 0.232007, 0, -0.515751 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Arm2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 24.035, 0 ), Vector3( 0, -165.735, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hit2"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Arm1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.284661, -0.275384, -0.342157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Arm1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -32.146, 0, 45 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Arm2:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.232007, 0, -0.515751 ), Vector3( 0.0995947, 0, -0.482369 ), Vector3( 0.851011, 0, -0.0939043 ), Vector3( 0.232007, 0, -0.515751 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Arm2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 24.035, 0 ), Vector3( 0, -165.735, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.930465
+height = 0.938271
+
+[node name="Sword" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719519, 0 )
+script = ExtResource( 2 )
+hit_sound = ExtResource( 4 )
+fire_rate = 0.3
+damage = 50
+
+[node name="Arm1" type="Spatial" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.598704, 0.598704, 0.532078, -0.376237, -0.376237, 0.846695, -0.284661, -0.275384, -0.342157 )
+
+[node name="Fist" type="MeshInstance" parent="Arm1"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )
+
+[node name="Arm2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232007, 0, -0.515751 )
+
+[node name="Fist" type="MeshInstance" parent="Arm2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )
+
+[node name="sword" type="MeshInstance" parent="Arm2"]
+transform = Transform( -4.37114e-08, 0, -0.999999, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91068e-15, 0, 0, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+anims/hit1 = SubResource( 1 )
+anims/hit2 = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="DamageArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
+transform = Transform( 0.000513267, -0.000346463, 1, 0.000183097, 1, 0.000346382, -1, 0.000182945, 0.000513322, 0, 0, -0.822719 )
+shape = SubResource( 3 )

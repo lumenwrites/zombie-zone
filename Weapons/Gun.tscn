@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/weapons/gun.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "reload"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponModel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.139558, 0.130967 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponModel:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -26.9474, 17.3765, 12.7142 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponModel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.135427, 0.113453 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponModel:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 14.141, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Gun" instance=ExtResource( 1 )]
+fire_rate = 0.4
+spread = 1
+damage = 40
+speed_modifier = 1.5
+
+[node name="Model" parent="WeaponModel" index="0"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -0.438682 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 3 )
+material/3 = ExtResource( 3 )
+
+[node name="Arm1" parent="WeaponModel" index="1"]
+transform = Transform( 0.369312, -0.0376443, -0.928544, -0.298956, 0.941252, -0.157065, 0.879906, 0.335599, 0.336363, -0.000854254, -0.259675, -0.441415 )
+
+[node name="Arm2" parent="WeaponModel" index="2"]
+transform = Transform( -0.00748003, 0.876017, 0.482226, -0.999867, 0.000446098, -0.0163198, -0.0145115, -0.482283, 0.875895, 0.0346358, -0.168177, -0.445874 )
+
+[node name="Muzzle" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.798886 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/reload = SubResource( 1 )
+anims/shoot = SubResource( 2 )

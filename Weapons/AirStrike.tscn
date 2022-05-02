@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/icons/air-strike.png" type="Texture" id=1]
+[ext_resource path="res://Weapons/AirStrike.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/reload.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/airstrike2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/empty.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/weapons/rocket.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=8]
+[ext_resource path="res://assets/weapons/air-strike-button.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://assets/weapons/fist.obj" type="ArrayMesh" id=10]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+flags_no_depth_test = true
+albedo_color = Color( 0.737255, 0.0588235, 0.0588235, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="CylinderMesh" id=4]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+
+[sub_resource type="Animation" id=5]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Target:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Target/Rocket/RocketMesh:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -20 ), Vector3( 0, 0, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Target/Rocket/Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 1, 5 ), Vector3( 1, 1, 1 ) ]
+}
+
+[node name="AirStrike" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="WeaponModel" type="Spatial" parent="."]
+
+[node name="Arm1" type="Spatial" parent="WeaponModel"]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.284661, 0.719519, -0.490955 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm1"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 8 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="Arm2" type="Spatial" parent="WeaponModel"]
+transform = Transform( -0.909766, 0.415122, 0, -0.375746, -0.823471, -0.4251, -0.176468, -0.386742, 0.905146, 0.232007, 0.719804, -0.640171 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 8 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 8 )
+
+[node name="Button" type="MeshInstance" parent="WeaponModel"]
+transform = Transform( 0.936782, -0.320348, 0.14077, 0.329659, 0.673103, -0.66201, 0.117321, 0.666566, 0.736156, 0.154931, 0.785276, -0.630606 )
+material_override = ExtResource( 8 )
+mesh = ExtResource( 9 )
+material/0 = null
+
+[node name="Target" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
+
+[node name="TargetMesh1" type="MeshInstance" parent="Target"]
+transform = Transform( 4.6, 0, 0, 0, 4.6, 4.90275e-14, 0, -4.90275e-14, 4.6, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="TargetMesh2" type="MeshInstance" parent="Target"]
+transform = Transform( -4.6, 4.02145e-07, 1.75783e-14, -4.02145e-07, -4.6, -4.02145e-07, -1.75783e-14, -4.02145e-07, 4.6, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="DamageArea" type="Area" parent="Target"]
+transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Target/DamageArea"]
+shape = SubResource( 3 )
+
+[node name="Rocket" type="Spatial" parent="Target"]
+transform = Transform( 0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0 )
+visible = false
+
+[node name="RocketMesh" type="MeshInstance" parent="Target/Rocket"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, -20 )
+material_override = ExtResource( 8 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 8 )
+
+[node name="Shadow" type="MeshInstance" parent="Target/Rocket"]
+transform = Transform( 3.53553, 5.96046e-08, -3.53553, 2.5, 0.707107, 2.5, 2.5, -0.707107, 2.5, 0, 0, 0 )
+cast_shadow = 3
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/turn = SubResource( 5 )
+
+[node name="AudioFire" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 5.0
+unit_size = 7.0
+max_db = 6.0
+
+[node name="AudioEmpty" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="AudioReload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="RocketAnimation" type="AnimationPlayer" parent="."]
+anims/fire = SubResource( 6 )

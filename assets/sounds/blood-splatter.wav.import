@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blood-splatter.wav-f170e68cf31a6f98d4cd58cc82929432.sample"
+
+[deps]
+
+source_file="res://assets/sounds/blood-splatter.wav"
+dest_files=[ "res://.import/blood-splatter.wav-f170e68cf31a6f98d4cd58cc82929432.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

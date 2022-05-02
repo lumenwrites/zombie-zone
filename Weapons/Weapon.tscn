@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/weapons/assault-rifle.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/empty.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/gunshot.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/reload.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/weapons/fist.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "reload"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponModel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.139558, 0.130967 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponModel:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -26.9474, 17.3765, 12.7142 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponModel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.113 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponModel:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Weapon" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299, 0.693, 0 )
+script = ExtResource( 2 )
+
+[node name="WeaponModel" type="Spatial" parent="."]
+
+[node name="Model" type="MeshInstance" parent="WeaponModel"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 7 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 7 )
+
+[node name="Arm1" type="Spatial" parent="WeaponModel"]
+transform = Transform( 0.369722, -0.0333876, -0.928544, -0.309778, 0.937746, -0.157064, 0.875981, 0.345712, 0.336363, -0.000854135, -0.110288, -0.489447 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 7 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="Arm2" type="Spatial" parent="WeaponModel"]
+transform = Transform( -0.00748003, 0.876017, 0.482226, -0.999867, 0.000446098, -0.0163198, -0.0145115, -0.482283, 0.875895, 0.0346358, -0.168177, 0.0131638 )
+
+[node name="Fist" type="MeshInstance" parent="WeaponModel/Arm2"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+material_override = ExtResource( 7 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="Muzzle" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.857914 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/reload = SubResource( 1 )
+anims/shoot = SubResource( 2 )
+
+[node name="AudioEmpty" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 7.0
+
+[node name="AudioFire" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_size = 7.0
+
+[node name="AudioReload" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_size = 7.0

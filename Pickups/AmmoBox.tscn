@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sounds/pickup-weapon.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/environment/crate-ammo.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Pickups/AmmoBox.gd" type="Script" id=3]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=4]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.566374
+
+[sub_resource type="Animation" id=2]
+resource_name = "spin"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponModel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ) ]
+}
+
+[node name="AmmoBox" type="Area"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="WeaponModel" type="Spatial" parent="."]
+transform = Transform( 1, 0, -6.51683e-07, 0, 1, 0, 6.51683e-07, 0, 1, 0, 0, 0 )
+
+[node name="Mesh" type="MeshInstance" parent="WeaponModel"]
+transform = Transform( 1, 0, 6.51683e-07, 0, 1, 0, -6.51683e-07, 0, 1, 0, 0.584, 0 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="PickupAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spin = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_AmmoBox_body_entered"]
+[connection signal="finished" from="PickupAudio" to="." method="_on_PickupAudio_finished"]

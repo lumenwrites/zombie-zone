@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/crate-health.obj-d431e86102e4c7696bbd891593fd811b.mesh"
+
+[deps]
+
+files=[ "res://.import/crate-health.obj-d431e86102e4c7696bbd891593fd811b.mesh" ]
+
+source_file="res://assets/environment/crate-health.obj"
+dest_files=[ "res://.import/crate-health.obj-d431e86102e4c7696bbd891593fd811b.mesh", "res://.import/crate-health.obj-d431e86102e4c7696bbd891593fd811b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

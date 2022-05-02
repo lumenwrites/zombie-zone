@@ -1,0 +1,13 @@
+# Godot-specific ignores
+.import/
+
+
+# Exports
+Out/
+
+# Local user overrides
+override.cfg
+
+
+# Other
+.DS_Store

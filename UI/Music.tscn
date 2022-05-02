@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/soundtrack/resident-evil.mp3" type="AudioStream" id=1]
+[ext_resource path="res://UI/Music.gd" type="Script" id=2]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+script = ExtResource( 2 )
+play_music = false
+
+[connection signal="finished" from="." to="." method="_on_Music_finished"]

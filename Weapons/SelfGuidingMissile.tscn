@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/weapons/rocket.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Weapons/SelfGuidingMissile.gd" type="Script" id=2]
+[ext_resource path="res://assets/materials/lowpoly_material.tres" type="Material" id=3]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.5
+height = 0.25
+
+[sub_resource type="SphereShape" id=2]
+radius = 9.0
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+albedo_color = Color( 1, 0, 0, 0.313726 )
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+flip_faces = true
+
+[sub_resource type="SphereShape" id=5]
+
+[node name="SelfGuidingMissile" type="Area"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Lifespan" type="Timer" parent="."]
+
+[node name="Rocket" type="MeshInstance" parent="."]
+transform = Transform( -3, 0, -7.78829e-07, 0, 3, 0, 1.16824e-06, 0, -2, 0, 0, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+visible = false
+light_color = Color( 1, 0.00392157, 0.00392157, 1 )
+light_energy = 2.0
+omni_attenuation = 0.450625
+
+[node name="TargetArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="TargetArea"]
+shape = SubResource( 2 )
+
+[node name="DamageArea" type="Area" parent="."]
+
+[node name="ExplosionSphere" type="MeshInstance" parent="DamageArea"]
+visible = false
+material_override = ExtResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
+shape = SubResource( 5 )
+
+[node name="Raycasts" type="Spatial" parent="."]
+
+[node name="RayCast1" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast2" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast3" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast4" type="RayCast" parent="Raycasts"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast5" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast6" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[node name="RayCast7" type="RayCast" parent="Raycasts"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 2147483679
+
+[connection signal="area_entered" from="." to="." method="_on_SelfGuidingMissile_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_SelfGuidingMissile_body_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_Lifespan_timeout"]
+[connection signal="body_entered" from="TargetArea" to="." method="_on_TargetArea_body_entered"]

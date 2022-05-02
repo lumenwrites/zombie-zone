@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/sentry.obj-6b68cceb3b543559d89bf2e83608e689.mesh"
+
+[deps]
+
+files=[ "res://.import/sentry.obj-6b68cceb3b543559d89bf2e83608e689.mesh" ]
+
+source_file="res://assets/weapons/sentry.obj"
+dest_files=[ "res://.import/sentry.obj-6b68cceb3b543559d89bf2e83608e689.mesh", "res://.import/sentry.obj-6b68cceb3b543559d89bf2e83608e689.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
